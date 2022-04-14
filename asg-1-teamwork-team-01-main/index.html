@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="defaultPage.css"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Rubik:400,500,600,700"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/deafult.css" />
+    <link rel="stylesheet" href="css/details.css" />
+    <link rel="stylesheet" href="css/home.css" />
+
+    <script src="js/movieHelperClass.js"></script>
+
+    <script src="js/createMovieElement.js"></script>
+    <script src="js/createMovieElement2.js"></script>
+
+    <script src="js/displayDefault.js"></script>
+    <script src="js/homePageEvents.js"></script>
+    <script src="js/defaultPageEvents.js"></script>
+
+    <script src="js/detailsPageEvents.js"></script>
+    <script src="js/populatefavourites.js"></script>
+
+    <title>Comp 3512 - Assignment 1</title>
+  </head>
+  <body>
+    <!-- HOME PAGE -->
+    <div class="mywrapper" id="homePage">
+      <div class="row">
+        <div class="col s12 m2 l2 xl2"></div>
+        <div class="col s12 m2 l2 xl2"></div>
+        <div class="col s12 m6 l6 xl4 center carditemHome pull-m1">
+          <div class="card small">
+            <div>
+              <h2 class="titleHome">Movie Browser</h2>
+            </div>
+            <div class="home-card-content">
+              <form autocomplete="off" class="container">
+                <div class="autocomplete row titlerow">
+                  <div class="col m2 movie-titleHome">
+                    <h6 class="homeh6">Title</h6>
+                  </div>
+                  <div class="col m3"></div>
+                  <div class="input-field col m9 search-field">
+                    <input
+                      id="movie-search"
+                      type="text"
+                      class="placeInput"
+                      placeholder="Eg. No Time To Die"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="card-action">
+              <div class="col s6 m6">
+                <button
+                  class="waves-effect waves-light btn homebuttonwidth"
+                  id="homePage-search-button-matching"
+                  type="submit"
+                  name="action"
+                  title="Search"
+                >
+                  <span>Search</span>
+                </button>
+              </div>
+              <div class="col s6 m6">
+                <button
+                  class="waves-effect waves-light btn homebuttonwidth"
+                  type="submit"
+                  name="action"
+                  title="Search"
+                  id="favButton"
+                >
+                  Favourites
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m2 l2 xl2"></div>
+        <div></div>
+      </div>
+      <div class="row ref">
+        <div class="col s12 m3 l2 xl2"></div>
+        <div class="col s12 m3 l2 xl2"></div>
+        <div class="col s12 m3 l6 xl4 center pull-m1 credit">
+          <span
+            >Image from:
+            <a
+              class="creditHome home-a"
+              href="https://unsplash.com/photos/o4c2zoVhjSw"
+              >Unsplash.com</a
+            ></span
+          >
+        </div>
+        <div class="col s12 m3 l2 xl2"></div>
+      </div>
+    </div>
+
+    <!-- Default -->
+    <div id="defaultview" class="defaultbody">
+      <div class="mywrapper">
+        <div class="row defaultheaderevent">
+          <h1 class="center header">COMP 3512 - Assignment 1</h1>
+        </div>
+
+        <div class="row">
+          <div class="row">
+            <div class="col">
+              <div class="switch center">
+                <label>
+                  <span class="toggle-text">Hide filters</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m4 border blue lighten-4 filters-div">
+            <div class="row center">
+              <h5 class="bolder header filter-header">Movie Filters</h5>
+              <!-- Switch -->
+            </div>
+
+            <div class="row">
+              <h5 class="filter-headings title-mobile">Title</h5>
+              <div class="custom-wrapper1">
+                <div
+                  class="input-field blue-grey lighten-4 col s10 xl7 box-wrapper"
+                >
+                  <input
+                    value=""
+                    placeholder="Eg. Spiderman: No Way Home"
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <h5 class="filter-headings title-mobile">Year</h5>
+              <div class="custom-wrapper">
+                <div class="row">
+                  <div class="col s4 l4 xl4">
+                    <p>
+                      <label>
+                        <input
+                          class="radioFilter beforeyearradio"
+                          name="g1"
+                          type="radio"
+                        />
+                        <span class="bolder">Before</span>
+                      </label>
+                    </p>
+                  </div>
+
+                  <div
+                    class="input-tablet col s3 l2 xl3 filter-input-field box-wrapper blue-grey lighten-4"
+                  >
+                    <input
+                      class="beforeInput"
+                      value=""
+                      placeholder="Eg. 1999"
+                      type="text"
+                      maxlength="4"
+                      pattern="\d*"
+                    />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col s4 l5 xl4">
+                    <p>
+                      <label>
+                        <input
+                          class="radioFilter afteryearradio"
+                          name="g1"
+                          type="radio"
+                        />
+                        <span class="bolder">After</span>
+                      </label>
+                    </p>
+                  </div>
+
+                  <div
+                    class="input-tablet col s3 l4 xl3 filter-input-field box-wrapper blue-grey lighten-4"
+                  >
+                    <input
+                      class="afterInput"
+                      value=""
+                      placeholder="Eg. 2010"
+                      type="text"
+                      maxlength="4"
+                      pattern="\d*"
+                    />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col s4 l5 xl4">
+                    <p>
+                      <label>
+                        <input
+                          class="radioFilter betweenyearradio"
+                          name="g1"
+                          type="radio"
+                        />
+                        <span class="bolder">Between</span>
+                      </label>
+                    </p>
+                  </div>
+
+                  <div
+                    class="input-tablet col s3 l12 xl3 filter-input-field box-wrapper blue-grey lighten-4"
+                  >
+                    <input
+                      class="betweenInputlow"
+                      value=""
+                      placeholder="Eg. 2008"
+                      type="text"
+                      maxlength="4"
+                      pattern="\d*"
+                    />
+                  </div>
+                  <div class="col xl1">
+                    <h6 class="and">&</h6>
+                  </div>
+                  <div
+                    class="input-tablet lateYearBet col s3 l12 xl3 filter-input-field box-wrapper blue-grey lighten-4"
+                  >
+                    <input
+                      class="betweenInputhigh"
+                      value=""
+                      placeholder="Eg. 2015"
+                      type="text"
+                      maxlength="4"
+                      pattern="\d*"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row ratingrow">
+              <h5 class="filter-headings title-mobile">Rating</h5>
+
+              <div class="custom-wrapper">
+                <div class="row">
+                  <div class="col s4 l5 xl4">
+                    <p>
+                      <label>
+                        <input
+                          class="radioFilter belowratingradio"
+                          name="g2"
+                          type="radio"
+                        />
+                        <span class="bolder">Below</span>
+                      </label>
+                    </p>
+                  </div>
+                  <div>
+                    <div class="col s6 l4 xl4 slider-field">
+                      <form name="registrationForm">
+                        <input
+                          type="range"
+                          name="g2"
+                          id="aboveInputId"
+                          value="0"
+                          min="0"
+                          max="10"
+                          step="0.5"
+                        />
+                      </form>
+                    </div>
+
+                    <div class="col s2 slider-output">
+                      <output
+                        name="ageOutputName"
+                        id="beforeOutputId"
+                        class="slider"
+                        >0</output
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col s4 l5 xl4">
+                    <p>
+                      <label>
+                        <input
+                          class="radioFilter aboveratingradio"
+                          name="g2"
+                          type="radio"
+                        />
+                        <span class="bolder">Above</span>
+                      </label>
+                    </p>
+                  </div>
+                  <div>
+                    <div class="col s6 l4 xl4 slider-field">
+                      <form name="registrationForm">
+                        <input
+                          type="range"
+                          name="before"
+                          id="aboveInputIdrange"
+                          value="0"
+                          min="0"
+                          max="10"
+                          step="0.5"
+                        />
+                      </form>
+                    </div>
+
+                    <div class="col s2 slider-output">
+                      <output
+                        name="ageOutputName"
+                        id="aboveOutputId"
+                        class="slider"
+                        >0</output
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col s4 l5 xl4">
+                    <p>
+                      <label>
+                        <input
+                          class="radioFilter betweenratingradio"
+                          name="g2"
+                          type="radio"
+                        />
+                        <span class="bolder">Between</span>
+                      </label>
+                    </p>
+                  </div>
+                  <div>
+                    <div class="col s6 l4 xl4 slider-field">
+                      <form name="registrationForm">
+                        <input
+                          type="range"
+                          name="before"
+                          id="betweenInputId"
+                          value="0"
+                          min="0"
+                          max="10"
+                          step="0.5"
+                        />
+                      </form>
+                    </div>
+
+                    <div class="col s2 slider-output">
+                      <output
+                        name="ageOutputName"
+                        id="betweenOutputId"
+                        class="slider"
+                        >0</output
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col s4 l5 xl4"></div>
+                  <div>
+                    <div class="bottombetween col s6 l4 xl4 slider-field">
+                      <form name="registrationForm">
+                        <input
+                          type="range"
+                          name="before"
+                          id="between1InputId"
+                          value="0"
+                          min="0"
+                          max="10"
+                          step="0.5"
+                          class="orange"
+                        />
+                      </form>
+                    </div>
+
+                    <div class="bottombetween col s2 slider-output">
+                      <output
+                        name="ageOutputName"
+                        id="between1OutputId"
+                        class="slider"
+                        >0</output
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row filter-buttons">
+              <div class="filterWarn">*Please insert a title or filter*</div>
+              <div class="container center">
+                <div class="col s6 m6">
+                  <button
+                    class="waves-effect waves-light btn orange button-text filterMovie"
+                    type="submit"
+                    name="action"
+                    title="Filter"
+                  >
+                    Filter
+                  </button>
+                </div>
+                <div class="col s6 m6">
+                  <button
+                    class="waves-effect waves-light btn orange button-text"
+                    type="reset"
+                    name="action"
+                    title="Clear"
+                  >
+                    Clear
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s12 m8 border blue lighten-4 movie-holder">
+            <div class="row center">
+              <h5 class="bolder header filter-header list-heading">
+                List / Matches
+              </h5>
+            </div>
+            <div class="row center pad mobile-container">
+              <div class="row">
+                <div class="col s2 m2"></div>
+                <div class="col s3 m4">
+                  <h6 id="titleSort" class="movie-headers mobile-heading">
+                    Title&#8645;
+                  </h6>
+                </div>
+                <div class="col s3 m2">
+                  <h6 class="yearSort movie-headers mobile-heading">
+                    Year&#8645;
+                  </h6>
+                </div>
+                <div class="col s2 m2">
+                  <h6 id="ratingsort" class="movie-headers mobile-heading">
+                    Rating&#8645;
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div id="movie-box" class="listoverflow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Details View -->
+    <!-- HEADER SECTION -->
+
+    <div class="mywrapper" id="detailsPage">
+      <div class="headtitleDetails">
+        <div class="row details-header-event">
+          <h1 class="center">COMP 3512 - Assignment 1</h1>
+        </div>
+        <div class="backDetails center">
+          <a
+            class="detailsbuttonup waves-effect waves-light btn orange lighten-2"
+            ><i class="material-icons left-details back-button-text-details"
+              >arrow_back</i
+            ><span class="back-button-text-details">Back To Search</span></a
+          >
+        </div>
+      </div>
+
+      <!-- MAIN BODY -->
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="close-modal">&times; Close</div>
+        </div>
+      </div>
+
+      <div class="row main-details-holder">
+        <div class="col s12 m4 left-section">
+          <div id="movietitleBox"></div>
+          <div class="center poster-images-dynamic"></div>
+
+          <div id="right-section-bottom">
+            <div class="col s12"></div>
+            <div class="col s12 m12 info2-details center bottom-left-outter">
+              <div class="row box-details test-details genres-dynamic"></div>
+
+              <div class="row box-details test-details keyword-dynamic"></div>
+
+              <div class="row box-details test-details comp-details"></div>
+
+              <div class="row box-details test-details country-details"></div>
+              <div class="row box-details test-details budget-details"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MIDDLE SECTION FOR GENERAL INFORMATION -->
+        <div class="col s12 m4 middle">
+          <div
+            class="info-content info-content-mobile-details movieinfo-details"
+          >
+            <div class="row">
+              <div class="col s4">
+                <div class="release-date center release-date-dynamic"></div>
+              </div>
+              <div class="col s4">
+                <div class="revenue center" id="dynamic-revenue"></div>
+              </div>
+              <div class="col s4">
+                <div class="runtime center" id="dynamic-runtime"></div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s4">
+                <div class="tagline center" id="tagline"></div>
+              </div>
+              <div class="col s4">
+                <div class="imdb center">
+                  <h6 class="info-content-headers-details">Visit IMDB</h6>
+                  <p>
+                    <a
+                      class="details-a"
+                      rel="noopener noreferrer"
+                      id="IMDB"
+                      href=""
+                    >
+                      <i class="fab fa-imdb db-icon imdb-event"></i>
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div class="col s4">
+                <div class="tmdb center">
+                  <h6 class="info-content-headers-details">Visit TMDB</h6>
+                  <p>
+                    <a
+                      class="details-a"
+                      rel="noopener noreferrer"
+                      id="TMDB"
+                      href=""
+                    >
+                      <span id="tmdb-event">
+                        <i class="fas fa-film db-icon"></i>
+                        <i class="fas fa-database db-icon"></i>
+                      </span>
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="overview"></div>
+            <div class="ratings">
+              <h6 class="info-content-headers-details">Ratings</h6>
+              <p>
+                <span class="inner-rating" id="popularity">
+                  <i class="fas fa-fire padright"></i>
+                </span>
+              </p>
+              <p>
+                <span class="inner-rating" id="average">
+                  <i class="fas fa-star-half-alt padright"></i>
+                </span>
+              </p>
+              <p>
+                <span class="inner-rating" id="count">
+                  <i class="fas fa-calculator padright"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12">
+              <div class="container-iframe">
+                <iframe class="responsive-iframe"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CREW/CAST SECTION -->
+        <div class="col s12 m4 castright">
+          <div class="cast-list long">
+            <div class="card body-color card-details">
+              <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width tab-color">
+                  <li class="tab"><a class="active" href="#cast">Cast</a></li>
+                  <li class="tab"><a href="#crew">Crew</a></li>
+                </ul>
+              </div>
+              <div class="card-content default-card-content-details">
+                <div id="cast">
+                  <div class="headers">
+                    <div class="col s6">
+                      <h6 class="header-name">Name</h6>
+                    </div>
+                    <div class="col s6">
+                      <h6 class="header-character">Character</h6>
+                    </div>
+                  </div>
+                  <div class="crew long" id="castBox">
+                    <span></span>
+                  </div>
+                </div>
+                <div id="crew">
+                  <div class="headers">
+                    <div class="col s5">
+                      <h6 class="header-name">Name</h6>
+                    </div>
+
+                    <div class="col s7">
+                      <h6 class="header-character">Deptartment - Job</h6>
+                    </div>
+                  </div>
+                  <!-- you can copy this section and just fill in the names from test.txt-->
+                  <div class="crew long" id="crewBox">
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
